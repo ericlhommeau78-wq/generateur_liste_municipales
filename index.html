@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Générateur de noms personnalisés</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input, button { padding: 10px; font-size: 16px; margin: 5px; }
+    p { font-size: 24px; margin-top: 20px; color: #2a9d8f; }
+    .input-group { margin-bottom: 10px; }
+    label { display: block; margin-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Générateur de noms de liste pour les élections municipales</h1>
+
+
+
+  <div class="input-group">
+    <label for="nomCentral">Saisissez le nom de la commune</label>
+    <input type="text" id="nomCentral" placeholder="Ex : Saint-Truc, Metropolis">
+  </div>
+
+
+  <button onclick="genererNom()">Générer un nom</button>
+
+  <p id="resultat">Proposition</p>
+
+  <script>
+    const adjectifsAleatoires = ["", "Ensemble Pour", "Unis Pour", "L'Avenir de", "Demain", "Vivre à", "Construisons", "Vivre", "Pour", "Fiers de ", "Citoyens de"];
+    const suffixesAleatoires = ["", "Avenir", "2006", "Futur", "Vivant", "Heureux", "Citoyens", "Action", "Unie", "Autrement","Pour Tous", "Progrès", "Solidaire", "Demain", "En Mouvement", "Notre Ville", "Citoyenne"];
+
+    function genererNom() {
+            const nomCentral = document.getElementById("nomCentral").value.trim();
+
+
+      if(nomCentral === "") {
+        document.getElementById("resultat").innerText = "Merci de saisir un nom central !";
+        return;
+      }
+
+      const adj = adjectifsAleatoires[Math.floor(Math.random() * adjectifsAleatoires.length)];
+      const suffix = suffixesAleatoires[Math.floor(Math.random() * suffixesAleatoires.length)];
+
+
+      const nomAleatoire = adj + " " + nomCentral + " " + suffix;
+      document.getElementById("resultat").innerText = nomAleatoire;
+    }
+  </script>
+</body>
+</html>
